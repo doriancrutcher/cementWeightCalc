@@ -38,7 +38,7 @@ const App = props => {
         <Container style={{paddingBottom:'20px'}}>
 
             <Row style={{marginBottom:'20px'}}className="d-flex justify-content-center">
-                <input ref={desiredWeightRef} style={{height:'30vw', width:'30vw',borderRadius:'10px', color:'white', marginRight:'10px',textAlign:'center'}} placeholder="--lbs"></input>
+                <input ref={desiredWeightRef} style={{height:'30vw', width:'30vw',borderRadius:'10px',backgroundColor:'black',color:'white', marginRight:'10px',textAlign:'center'}} placeholder="--lbs"></input>
                 <Button onClick={()=>{calculateStuff(desiredWeightRef.current.value)}}>Enter</Button>
             </Row>
             <Row >
