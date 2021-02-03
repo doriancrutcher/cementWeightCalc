@@ -67285,18 +67285,35 @@ const {
 } = (0, _config.default)("development" || 'development');
 
 const App = props => {
-  const [cementdensity, changeDensity] = (0, _react.useState)(7);
-  const [waterPerLbs, changeWaterPerLbs] = (0, _react.useState)(5);
+  const [cementdensity, changeDensity] = (0, _react.useState)(2.6 / 500); //  lbs/ml
+
+  const [waterPerLbs, changeWaterPerLbs] = (0, _react.useState)(946.353 / 80); //  ml/lbs
+
   const [waterVol, changeWaterVol] = (0, _react.useState)(0);
   const [cementVol, changeCementVol] = (0, _react.useState)(0);
   const desiredWeightRef = (0, _react.useRef)();
 
   const calculateStuff = desiredWeight => {
-    changeWaterVol(desiredWeight * waterPerLbs);
-    changeCementVol(desiredWeight / cementdensity);
+    changeWaterVol(desiredWeight * waterPerLbs //lbs*ml/lbs
+    );
+    changeCementVol(desiredWeight / cementdensity //lbs*ml/lbs
+    );
   };
 
-  return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar, {
+    style: {
+      marginBottom: '10px'
+    },
+    bg: "dark",
+    variant: "dark",
+    expand: "lg"
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
+    href: "#home"
+  }, "Dumbbell Ingredient Calculator")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
+    style: {
+      paddingBottom: '20px'
+    }
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
     style: {
       marginBottom: '20px'
     },
@@ -67304,8 +67321,8 @@ const App = props => {
   }, /*#__PURE__*/_react.default.createElement("input", {
     ref: desiredWeightRef,
     style: {
-      height: '10vw',
-      width: '10vw',
+      height: '30vw',
+      width: '30vw',
       borderRadius: '10px',
       color: 'white',
       marginRight: '10px',
@@ -67316,27 +67333,23 @@ const App = props => {
     onClick: () => {
       calculateStuff(desiredWeightRef.current.value);
     }
-  }, "Enter")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
+  }, "Enter")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
+    className: "d-flex justify-content-center"
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
     style: {
       width: '18rem'
     }
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, "Amount of Water"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Subtitle, {
     className: "mb-2 text-muted"
-  }, "ml"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null, waterVol), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Link, {
-    href: "#"
-  }, "Card Link"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Link, {
-    href: "#"
-  }, "Another Link")))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
+  }, "ml"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null, waterVol)))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
+    className: "d-flex justify-content-center"
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
     style: {
       width: '18rem'
     }
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, "Amount of Cement"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Subtitle, {
     className: "mb-2 text-muted"
-  }, "ml"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null, cementVol), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Link, {
-    href: "#"
-  }, "Card Link"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Link, {
-    href: "#"
-  }, "Another Link"))))));
+  }, "ml"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null, cementVol)))))));
 };
 
 App.propTypes = {};
@@ -67386,7 +67399,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55379" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62667" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { login, logout } from './utils'
 import './global.css'
 import './scss/App.scss'
-import { Container, Row, Col, Card,Button } from 'react-bootstrap'
+import { Container, Row, Col, Card,Button , Nav,Navbar, NavDropdown} from 'react-bootstrap'
 
 import getConfig from './config'
 const { networkId } = getConfig(process.env.NODE_ENV || 'development')
@@ -12,7 +12,7 @@ const { networkId } = getConfig(process.env.NODE_ENV || 'development')
 
 const App = props => {
 
-    const [cementdensity, changeDensity] = useState(500/2.6); //  ml/lbs
+    const [cementdensity, changeDensity] = useState(2.6/500); //  lbs/ml
     const [waterPerLbs,changeWaterPerLbs]=useState(946.353/80);//  ml/lbs
     const [waterVol, changeWaterVol] = useState(0);
     const [cementVol, changeCementVol] = useState(0);
@@ -28,14 +28,21 @@ const App = props => {
         )
     }
 
-    return (
-        <Container>
+    return (<React.Fragment>
+        <Navbar style={{marginBottom:'10px'}} bg="dark" variant="dark" expand="lg">
+        <Navbar.Brand href="#home">
+     
+         Dumbbell Ingredient Calculator
+        </Navbar.Brand>
+      </Navbar>
+        <Container style={{paddingBottom:'20px'}}>
+
             <Row style={{marginBottom:'20px'}}className="d-flex justify-content-center">
-                <input ref={desiredWeightRef} style={{height:'10vw', width:'10vw',borderRadius:'10px', color:'white', marginRight:'10px',textAlign:'center'}} placeholder="--lbs"></input>
+                <input ref={desiredWeightRef} style={{height:'30vw', width:'30vw',borderRadius:'10px', color:'white', marginRight:'10px',textAlign:'center'}} placeholder="--lbs"></input>
                 <Button onClick={()=>{calculateStuff(desiredWeightRef.current.value)}}>Enter</Button>
             </Row>
-            <Row>
-                <Col><Card style={{ width: '18rem' }}>
+            <Row >
+                <Col className="d-flex justify-content-center"><Card style={{ width: '18rem'}}>
                     <Card.Body>
                         <Card.Title>Amount of Water</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">ml</Card.Subtitle>
@@ -45,18 +52,19 @@ const App = props => {
                         
                     </Card.Body>
                 </Card></Col>
-                <Col><Card style={{ width: '18rem' }}>
+                <Col className="d-flex justify-content-center"><Card style={{ width: '18rem' }}>
                     <Card.Body>
                         <Card.Title>Amount of Cement</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">ml</Card.Subtitle>
                         <Card.Text>
                             {cementVol}
                         </Card.Text>
-                     
+                
                     </Card.Body>
                 </Card></Col>
             </Row>
         </Container>
+        </React.Fragment>
     );
 };
 
