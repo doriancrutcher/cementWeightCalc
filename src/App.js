@@ -12,8 +12,8 @@ const { networkId } = getConfig(process.env.NODE_ENV || 'development')
 
 const App = props => {
 
-    const [cementdensity, changeDensity] = useState(7);
-    const [waterPerLbs,changeWaterPerLbs]=useState(5);
+    const [cementdensity, changeDensity] = useState(500/2.6); //  ml/lbs
+    const [waterPerLbs,changeWaterPerLbs]=useState(946.353/80);//  ml/lbs
     const [waterVol, changeWaterVol] = useState(0);
     const [cementVol, changeCementVol] = useState(0);
 
@@ -21,10 +21,10 @@ const App = props => {
 
     const calculateStuff=(desiredWeight)=>{
         changeWaterVol(
-            desiredWeight*waterPerLbs
+            desiredWeight*waterPerLbs  //lbs*ml/lbs
         )
         changeCementVol(
-            desiredWeight/cementdensity
+            desiredWeight/cementdensity //lbs*ml/lbs
         )
     }
 
@@ -42,8 +42,7 @@ const App = props => {
                         <Card.Text>
                             {waterVol}
                         </Card.Text>
-                        <Card.Link href="#">Card Link</Card.Link>
-                        <Card.Link href="#">Another Link</Card.Link>
+                        
                     </Card.Body>
                 </Card></Col>
                 <Col><Card style={{ width: '18rem' }}>
@@ -53,8 +52,7 @@ const App = props => {
                         <Card.Text>
                             {cementVol}
                         </Card.Text>
-                        <Card.Link href="#">Card Link</Card.Link>
-                        <Card.Link href="#">Another Link</Card.Link>
+                     
                     </Card.Body>
                 </Card></Col>
             </Row>
